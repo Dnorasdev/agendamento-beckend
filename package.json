@@ -1,0 +1,17 @@
+{
+  "name": "controle-ferias-backend",
+  "version": "1.0.0",
+  "description": "Servidor backend para envio automático de e-mails de afastamento e retorno de usuários.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.5.0",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.3"
+  }
+}
