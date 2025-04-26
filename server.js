@@ -40,12 +40,12 @@ const verificarEEnviarEmails = async () => {
 
     if (afastamento && afastamento.getTime() === hoje.getTime()) {
       console.log(`📤 Enviando email de afastamento para ${dados.nome}`);
-      await enviarEmail('destino@email.com', `Afastamento - ${dados.nome}`, `${dados.nome} será afastado hoje.`);
+      await enviarEmail('fernando.cruz@silimed.com.br', `Afastamento - ${dados.nome}`, `${dados.nome} será afastado hoje.`);
     }
 
     if (retorno && retorno.getTime() === hoje.getTime()) {
       console.log(`📤 Enviando email de retorno para ${dados.nome}`);
-      await enviarEmail('destino@email.com', `Retorno - ${dados.nome}`, `${dados.nome} retorna hoje.`);
+      await enviarEmail('fernando.cruz@silimed.com.br', `Retorno - ${dados.nome}`, `${dados.nome} retorna hoje.`);
     }
   });
 };
