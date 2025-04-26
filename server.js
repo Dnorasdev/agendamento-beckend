@@ -29,9 +29,14 @@ const enviarEmail = async (destino, assunto, corpo) => {
 
 // Função para capitalizar textos
 const capitalizar = (texto) => {
-  if (!texto) return '';
-  return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
-};
+    if (!texto) return '';
+    return texto
+      .toLowerCase()
+      .split(' ')
+      .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1))
+      .join(' ');
+  };
+  
 
 // Função para gerar o corpo do e-mail (com cor dinâmica)
 const gerarCorpoEmail = ({ tipo, nome, funcao, data, corData }) => {
