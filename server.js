@@ -3,7 +3,6 @@ const enviarEmail = async (destino, assunto, corpo) => {
       from: process.env.EMAIL_FROM,
       to: destino,
       subject: assunto,
-      text: corpo.replace(/(<([^>]+)>)/gi, ""), // fallback texto puro
       html: corpo
     });
   };
