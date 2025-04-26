@@ -1,0 +1,26 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - main # Aqui, sua branch principal. Se for 'master', é só mudar aqui.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set FIREBASE_CONFIG
+        run: echo "FIREBASE_CONFIG=$FIREBASE_CONFIG" >> $GITHUB_ENV
+        env:
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+
+      - name: Trigger Render deploy
+        run: |
+          curl -X POST https://api.render.com/v1/services/RND_PG2Y49K1A6TZ8JY1YG9LCXYEXBFPICE_ID/deploys \
+          -H 'Accept: application/json' \
+          -H 'Authorization: Bearer ${{ secrets.RENDER_API_KEY }}' \
+          -d '{}'
