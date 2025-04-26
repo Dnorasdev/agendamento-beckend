@@ -8,10 +8,12 @@ if (!process.env.FIREBASE_CONFIG) {
 let serviceAccount;
 
 try {
-  // Tenta fazer o parse do JSON
   serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
+
+  // Corrige a private_key: substitui \\n por \n
+  serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
 } catch (error) {
-  console.error('Erro ao fazer JSON.parse do FIREBASE_CONFIG:', error.message);
+  console.error('Erro ao fazer JSON.parse ou ajustar private_key do FIREBASE_CONFIG:', error.message);
   throw new Error('FIREBASE_CONFIG inválido. Verifique se o JSON está corretamente formatado.');
 }
 
@@ -20,7 +22,6 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
-// Exporta o Firestore
 const db = admin.firestore();
 
 module.exports = { db };
