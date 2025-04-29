@@ -114,7 +114,7 @@ const verificarEEnviarEmails = async () => {
 
 // Agendamento diário às 08:00
 cron.schedule('0 8 * * *', () => {
-  console.log('⏰ Rodando verificação de emails às 08:00');
+  console.log('⏰ Rodando verificação de emails às 09:30');
   verificarEEnviarEmails();
 });
 
