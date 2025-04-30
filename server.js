@@ -113,8 +113,10 @@ const verificarEEnviarEmails = async () => {
 };
 
 // Agendamento diário às 08:00
-cron.schedule('30 10 * * *', () => {
-  console.log('⏰ Rodando verificação de emails às 10:30');
+cron.schedule('0 11 * * *', {
+  timezone: 'America/Sao_Paulo'
+}, () => {
+  console.log('⏰ Rodando verificação de emails às 11:00');
   verificarEEnviarEmails();
 });
 
